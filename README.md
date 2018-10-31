@@ -1,4 +1,4 @@
-# Initial setupe
+# Initial setup
 
 ## Write Raspbian image to SD card
 ### Windows
