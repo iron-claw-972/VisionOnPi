@@ -56,7 +56,8 @@ ssh pi@raspberrypi.local
 password: raspberry
 ```
 
-## Eable PI camera
+## Enable PI camera
+Note that this is not for usb camera, please refer to next section
 ```
 sudo raspi-config
 reboot
@@ -69,16 +70,21 @@ fswebcam -r 1920x1080 test5.jpg
 ```
 
 ## Face detection
+Installs opencv for python, matplotlib (a graphing utility)
 ```
 sudo apt-get install python-opencv
 sudo apt-get install python-matplotlib
+```
 
+Downloads images for facedetection and "Mona Lisa" painting for testing
+```
 wget https://raw.githubusercontent.com/shantnu/Webcam-Face-Detect/master/haarcascade_frontalface_default.xml
 
 wget -O face.jpg https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg
 ```
 
 ### Example face.py
+Simple face detection script which looks at face.png file
 ```python
 import io
 import picamera
