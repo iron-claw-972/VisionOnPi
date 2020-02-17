@@ -1,10 +1,21 @@
 # Initial setup
 
 ## Write Raspbian image to SD card
+
 ### Windows
-TODO
+
+Download and run Balena Etcher https://www.balena.io/etcher/
+
+Download the latest Raspbian image ("Raspbian Buster with desktop and recommended software" is the easiest to use): https://www.raspberrypi.org/downloads/raspbian/
+
+Press the select image button and navigate to the .zip file of the latest Raspbian image.
+
+Place the SD card into the SD card reader being used. At this point, the card should be detected by Balena Etcher.
+
+Press the Flash button and wait for it to complete.
 
 ### Mac
+
 ```
 $ diskutil list
 /dev/disk0 (internal):
@@ -33,36 +44,62 @@ $ sudo dd if=2017-11-29-raspbian-stretch.img of=/dev/rdisk2 bs=5m
 Wait until it is done, Ctrl+T will show progress
 $ diskutil eject /dev/disk2
 ```
+
+Alternatively, you can use Balnena Etcher.
+
+## Power On
+
+Place the imaged SD card into the SD card slot of the Raspberry Pi. Please note, that the metal connectors on the SD card should face the raspberry pi.
+
+Connect your monitor, keyboard and mouse.
+
+Plug in your power supply.
+
+At this point, the Raspberry Pi should boot.
+
+The default username and password combo are:
+username: pi
+password: raspberry
+
 ## Install software
+
 ### update OS (internet access required)
+
 ```
 sudo apt-get update
 sudo apt-get upgrade
 ```
+
 ## enable SSH and VNC
+
 ```
 $ sudo raspi-config
 ```
 Interfacing Options -> Enable SSH and VNC
 
 ## Install Windows Remote Desktop Access
+
 ```
 sudo apt-get install xrdp
 ```
 
 ## Access Raspberry PI from Mac
+
 ```
 ssh pi@raspberrypi.local
 password: raspberry
 ```
 
 ## Enable PI camera
+
 Note that this is not for usb camera, please refer to next section
+
 ```
 sudo raspi-config
 reboot
 raspistill -vf -hf -o test2.jpg
 ```
+
 ## Enable USB camera
 ```
 sudo apt-get install fswebcam
@@ -84,6 +121,7 @@ wget -O face.jpg https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_
 ```
 
 ### Example face.py
+
 Simple face detection script which looks at face.png file
 ```python
 import io
@@ -111,12 +149,15 @@ for (x,y,w,h) in faces:
 #Save the result image
 cv2.imwrite('result.jpg',image)
 ```
+
 ### Run with
+
 ```
 python face.py
 ```
 
 ## Install package for communication with RoboRio
+
 ```
 $ pip install pynetworktables
 ```
