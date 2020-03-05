@@ -117,3 +117,17 @@ In order to install networktables, use the command:
 ```
 pip3 install pynetworktables
 ```
+
+## PyCharm
+
+PyCharm is a python code editor which can be downloaded onto a Jetson. The editor makes writing vision code significantly easier.
+
+In order to download it, go to the [PyCharm website](https://www.jetbrains.com/pycharm/download/#section=linux) and download the community version for linux. After this, right click on the downloaded file and select to extract the file.
+
+In order to run PyCharm, you also need to install a JDK. In order to do this, run the command:
+
+```
+sudo apt-get install default-jdk
+```
+
+To start PyCharm you need to run a shell script, specifically `pycharm.sh` which is located in `[your_extracted_pycharm_folder]/bin/pycharm.sh`. Once you have navigated into the `bin/` directory, start PyCharm by using the command `./pycharm.sh`. This will start PyCharm.
