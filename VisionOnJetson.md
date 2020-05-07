@@ -4,6 +4,8 @@
 
 It is strongly recommended to use a 64 GB or larger SD card.
 
+In order to write the image, the following directions should be followed:
+
 https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
 
 # First login
@@ -14,39 +16,17 @@ Connect your monitor, keyboard, mouse and power supply to the Jetson Nano. The J
 
 ## First boot setup
 
-The most important things to do are to set the username / "your name" to `pi`, the password to `raspberry` and the device name to `jetson`. This is in an attempt to stop people from losing the password for a Jetson. After this point, you can skip through most of the other config.
+The most important things to do are to set the username, password and the device name. After this point, you can skip through most of the other config.
 
 # Important installs
 
 ## Use of sudo
 
-`sudo` is a keyword that can be added to almost any command in the terminal. Adding `sudo`, means that the next command will be run with administrator privileges. When run, the terminal will ask for the admin password, which should be `raspberry`.
+`sudo` is a keyword that can be added to almost any command in the terminal. Adding `sudo`, means that the next command will be run with administrator privileges. The terminal will then ask for the administrator password, upon entering the password the command will run with administrator privileges.
 
 ## Networking
 
 In order to complete the next steps, one must connect the Jetson Nano to the internet. This can either be achieved through an ethernet connection to the Jetson or through Wifi. In order to connect through wifi, one needs a USB wifi card.
-
-## Swap file
-
-In order to set up a swap file, which allows for the system to use some of the SD storage as additional RAM, one should run the command:
-
-```
-git clone https://github.com/JetsonHacksNano/installSwapfile
-```
-
-Then switch the directory to inside the downloaded folder:
-
-```
-cd installSwapfile
-```
-
-After which, the command:
-
-```
-./installSwapfile
-```
-
-Further directions can be found [here.](https://www.jetsonhacks.com/2019/04/14/jetson-nano-use-more-memory/)
 
 ## Download pip
 
@@ -87,6 +67,28 @@ sudo -H pip install jetson-stats
 ```
 
 In order to use `jtop`, one should run the command `sudo jtop`, which will open a ascii GUI in the terminal. In order to navigate, the keyboard should be used.
+
+## Swap file
+
+In order to set up a swap file, which allows for the system to use some of the SD storage as additional RAM, one should run the command:
+
+```
+git clone https://github.com/JetsonHacksNano/installSwapfile
+```
+
+Then switch the directory to inside the downloaded folder:
+
+```
+cd installSwapfile
+```
+
+After which, the command:
+
+```
+./installSwapfile
+```
+
+Further directions can be found [here.](https://www.jetsonhacks.com/2019/04/14/jetson-nano-use-more-memory/)
 
 ## OpenCV with CUDA
 
