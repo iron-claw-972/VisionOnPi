@@ -16,31 +16,31 @@ The electrical stack used to control the Vex electronics is comprised of several
 
 ### 7.2V Vex Battery
 
-![7.2V Vex Battery](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/large_robot_battery.png)
+[<img src="/images/vex/large_robot_battery.png" height="300"/>](/images/vex/large_robot_battery.png)
 
 The 7.2 volt Vex Battery provides power the robot. It is attached using [an adapter](www.google.com) that connects from the white plastic connector to two loose wires, one red and one black. The red positive lead should be connected to the `7.2V` port on the [blue terminal block labeled](www.google.com) `INPUT` located on the Supercortex. The black negative lead should be connected to the `GND` port on the same terminal block.
 
 ### 5V Buck Converter
 
-![5V Buck Converter](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/5v_buck_converter.jpg)
+![5V Buck Converter](/images/5v_buck_converter.jpg)
 
 This device converts the 7.2V from the battery into a 5V USB port that can be used to power the Raspberry Pi. It should be connected on one end into a designated port on the Supercortex using soldered wires. On the other end it should be connected via a USB A to USB C cable into the power input on the Raspberry Pi.
 
 ### Raspberry Pi 4B
 
-![Raspberry Pi 4B](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/raspberry_pi_4B.jpg)
+![Raspberry Pi 4B](/images/raspberry_pi_4B.jpg)
 
 The Raspberry Pi is the brains of the robot. It is the component that runs the code and controls the robot. It is connected through its GPIO Header into both the Adafruit 16 Channel Servo Hat and the Custom Supercortex Board.
 
 ### Adafruit 16 Channel Servo Hat
 
-![Adafruit 16 Channel Servo Hat](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/raspberry_pi_with_adafruit_servo_hat.jpg)
+![Adafruit 16 Channel Servo Hat](/images/raspberry_pi_with_adafruit_servo_hat.jpg)
 
 This board, sold by Adafruit, has 16 channels of PWM which allow the control of up to 16 motors or servos. It stacks using the GPIO header on top of the Raspberry Pi. For additional rigidity, one can also use M2.5 Hex Standoffs to support this board as it is only supported by the GPIO on one side.
 
 ### Custom Supercortex Board
 
-![Custom Supercortex Board](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/full_supercortex_stack.jpeg)
+![Custom Supercortex Board](/images/full_supercortex_stack_.jpeg)
 
 *The image above is rotated 180 relative to both the Raspberry Pi and Adafruit Servo Hat images above.*
 
@@ -80,9 +80,7 @@ There are two major types of actuators provided by Vex:
 
 ### Vex Motor Controller
 
-![Vex Motor Controller](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/motor_controller.jpg)
-
-![Test Image](/images/vex/motor_controller.jpg)
+![Vex Motor Controller](/images/vex/motor_controller.jpg)
 
 In order to use a Vex motor it needs to have the red and black leads connected to the corresponding leads  on the Vex Motor controller.
 
@@ -110,7 +108,7 @@ while True:
 
 ### Servo
 
-![Servo Motor](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/servo_motor.jpg)
+![Servo Motor](/images/vex/servo_motor.jpg)
 
 In order to use the Vex servo it needs to be connected directly to a PWM port.
 
@@ -147,7 +145,7 @@ There are four types of digital sensors provided by Vex:
 
 ### Vex Button
 
-![Vex Button](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/bumper_switch.jpg)
+![Vex Button](/images/vex/bumper_switch.jpg)
 
 Connect the Vex button to a digital input port.
 
@@ -191,7 +189,7 @@ while True:
 
 ### Vex Line Sensor
 
-![Vex Line Tracker](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/line_tracker.jpg)
+![Vex Line Tracker](/images/vex/line_tracker.jpg)
 
 Connect the Vex line sensor to a digital input port.
 
@@ -222,7 +220,7 @@ while True:
 
 ### Vex Encoder
 
-![Vex Optical Encoder](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/optical_shaft_encoder.jpg)
+![Vex Optical Encoder](/images/vex/optical_shaft_encoder.jpg)
 
 Connect the Vex encoder to two digital input ports.
 
@@ -265,7 +263,7 @@ while True:
 
 ### Ultrasonic Rangefinder
 
-![Vex Ultrasonic Rangefinder](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/ultrasonic_rangefinder.jpg)
+![Vex Ultrasonic Rangefinder](/images/vex/ultrasonic_rangefinder.jpg)
 
 Connect the Vex ultrasonic sensor to two digital input ports.
 
@@ -352,9 +350,9 @@ There are two analog Vex sensors:
 
 ### Reading from MCP3008
 
-![Vex Potentiometer](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/rotary_potentiometer.jpg)
+![Vex Potentiometer](/images/vex/rotary_potentiometer.jpg)
 
-![Vex Light Sensor](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/light_sensor.jpg)
+![Vex Light Sensor](/images/vex/light_sensor.jpg)
 
 The MCP3008 chip uses the SPI interface to add 8 analog inputs to the Raspberry Pi. It can be used with many analog sensors with the same code. **If your Supercortex is not equipped with a MCP3008, it will not be able to read analog sensors. Check if the MCP3008 slot is populated.**
 
