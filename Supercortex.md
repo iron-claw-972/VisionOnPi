@@ -40,7 +40,7 @@ This board, sold by Adafruit, has 16 channels of PWM which allow the control of 
 
 ### Custom Supercortex Board
 
-<img src="/images/full_supercortex_stack_.jpeg" height="300"/><br>
+<img src="/images/full_supercortex_stack.jpeg" height="300"/><br>
 
 *The image above is rotated 180 relative to both the Raspberry Pi and Adafruit Servo Hat images above.*
 
