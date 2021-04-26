@@ -2,6 +2,18 @@
 
 This document provides explanations and code samples for Vex sensors.
 
+# Electrical Guide
+
+## Pragmatics
+
+TODO Write
+
+## Theory
+
+TODO Write
+
+# Using Sensors and Actuators in Code
+
 ## Necessary Libraries
 
 In order to use actuators and sensors with python on the Raspberry Pi a few libraries need to be downloaded. Run the following commands in the terminal:
@@ -23,6 +35,8 @@ There are two major types of actuators provided by Vex:
   * A servo motor is generally a heavily geared DC motor with a potentiometer which allows for absolute rotational control. It can rotate within a limited range typically less than 1 rotation. Within this range, the servo can be set to a specific angle. It can be directly connect to a PWM port on the Raspberry Pi Stack.
 
 ### Vex Motor Controller
+
+![Vex Motor Controller](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/motor_controller.jpg)
 
 In order to use a Vex motor it needs to have the red and black leads connected to the corresponding leads  on the Vex Motor controller.
 
@@ -49,6 +63,8 @@ while True:
 ```
 
 ### Servo
+
+![Servo Motor](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/servo_motor.jpg)
 
 In order to use the Vex servo it needs to be connected directly to a PWM port.
 
@@ -84,6 +100,8 @@ There are four types of digital sensors provided by Vex:
   * An ultrasonic rangefinder sends out a pulse of ultrasonic sound and measures the time it takes before it echos back. Given the speed of sound being 343 m/s the distance traveled can be calculated. It allows the measurement of the distance from an object in front of it.
 
 ### Vex Button
+
+![Vex Button](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/bumper_switch.jpg)
 
 Connect the Vex button to a digital input port.
 
@@ -127,6 +145,8 @@ while True:
 
 ### Vex Line Sensor
 
+![Vex Line Tracker](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/line_tracker.jpg)
+
 Connect the Vex line sensor to a digital input port.
 
 | Wire Color  | Description | Where is it connected |
@@ -155,6 +175,8 @@ while True:
 [Additional documentation about the line sensor.](https://gpiozero.readthedocs.io/en/stable/api_input.html#linesensor-trct5000)
 
 ### Vex Encoder
+
+![Vex Optical Encoder](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/optical_shaft_encoder.jpg)
 
 Connect the Vex encoder to two digital input ports.
 
@@ -195,7 +217,9 @@ while True:
 
 [Additional documentation about the rotary encoder.](https://gpiozero.readthedocs.io/en/stable/api_input.html#rotaryencoder)
 
-### Ultrasonic Sensor
+### Ultrasonic Rangefinder
+
+![Vex Ultrasonic Rangefinder](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/ultrasonic_rangefinder.jpg)
 
 Connect the Vex ultrasonic sensor to two digital input ports.
 
@@ -206,7 +230,7 @@ Connect the Vex ultrasonic sensor to two digital input ports.
 | Yellow (Input side)  | Trigger pin, sends the ultrasonic pulse    | sgl                   |
 | Orange (Output side) | Echo pin, sends signal when echo received  | sgl                   |
 
-Here is a code sample for how to read from the ultrasonic sensor. It reads and prints the distance measured by the ultrasonic connected to GPIO pins `31` and `32`. **If you reverse the order of these pins, the ultrasonic sensor may be damaged.** It is important to have the correct trigger and echo GPIO pins when using it.
+Here is a code sample for how to read from the ultrasonic rangefinder. It reads and prints the distance measured by the sensor connected to GPIO pins `31` and `32`. **If you reverse the order of these pins, the ultrasonic sensor may be damaged.** It is important to have the correct trigger and echo GPIO pins when using it.
 
 ```python
 import RPi.GPIO as GPIO
@@ -227,28 +251,28 @@ GPIO.setup(GPIO_ECHO, GPIO.IN)
 def distance():
     # set Trigger to HIGH
     GPIO.output(GPIO_TRIGGER, True)
- 
+
     # set Trigger after 0.01ms to LOW
     time.sleep(0.00001)
     GPIO.output(GPIO_TRIGGER, False)
- 
+
     StartTime = time.time()
     StopTime = time.time()
- 
+
     # save StartTime
     while GPIO.input(GPIO_ECHO) == 0:
         StartTime = time.time()
- 
+
     # save time of arrival
     while GPIO.input(GPIO_ECHO) == 1:
         StopTime = time.time()
- 
+
     # time difference between start and arrival
     TimeElapsed = StopTime - StartTime
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
     distance = (TimeElapsed * 34300) / 2
- 
+
     return distance
 
 while True:
@@ -282,7 +306,11 @@ There are two analog Vex sensors:
 
 ### Reading from MCP3008
 
-The MCP3008 chip uses the SPI interface to add 8 analog inputs to the Raspberry Pi. It can be used with many analog sensors with the same code.
+![Vex Potentiometer](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/rotary_potentiometer.jpg)
+
+![Vex Light Sensor](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/light_sensor.jpg)
+
+The MCP3008 chip uses the SPI interface to add 8 analog inputs to the Raspberry Pi. It can be used with many analog sensors with the same code. **If your Supercortex is not equipped with a MCP3008, it will not be able to read analog sensors. Check if the MCP3008 slot is populated.**
 
 | Wire Color  | Description    | Where is it connected |
 | ----------- | -------------- | --------------------- |
@@ -304,7 +332,7 @@ from adafruit_mcp3xxx.analog_in import AnalogIn
 spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
 cs = digitalio.DigitalInOut(board.D26)
 mcp = MCP.MCP3008(spi, cs)
- 
+
 # create an analog input channel on pin 0 of the 8 available pins within the range [0, 7]
 # switch to MCP.P1 for pin 1, etc...
 channel0 = AnalogIn(mcp, MCP.P0)
