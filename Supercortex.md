@@ -16,7 +16,7 @@ The electrical stack used to control the Vex electronics is comprised of several
 
 ### 7.2V Vex Battery
 
-[<img src="/images/vex/large_robot_battery.png" height="300"/>](/images/vex/large_robot_battery.png)
+<img src="/images/vex/large_robot_battery.png" height="300"/><br>
 
 The 7.2 volt Vex Battery provides power the robot. It is attached using [an adapter](www.google.com) that connects from the white plastic connector to two loose wires, one red and one black. The red positive lead should be connected to the `7.2V` port on the [blue terminal block labeled](www.google.com) `INPUT` located on the Supercortex. The black negative lead should be connected to the `GND` port on the same terminal block.
 
