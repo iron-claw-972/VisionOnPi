@@ -1,6 +1,6 @@
 # Supercortex
 
-This document provides explanations and code samples for Vex actuators and sensors.
+This document provides explanations and code samples for using Vex actuators and sensors with the Supercortex Stack.
 
 # Electrical Guide
 
