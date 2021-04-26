@@ -1,16 +1,60 @@
 # Supercortex
 
-This document provides explanations and code samples for Vex sensors.
+This document provides explanations and code samples for Vex actuators and sensors.
 
 # Electrical Guide
 
 ## Pragmatics
 
-TODO Write
+The electrical stack used to control the Vex electronics is comprised of several key pieces:
+
+* 7.2V Vex Battery
+* 5V Buck Converter
+* Raspberry Pi 4B
+* Adafruit 16 Channel Servo Hat
+* Custom Supercortex Board
+
+### 7.2V Vex Battery
+
+![7.2V Vex Battery](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/large_robot_battery.png)
+
+The 7.2 volt Vex Battery provides power the robot. It is attached using [an adapter](www.google.com) that connects from the white plastic connector to two loose wires, one red and one black. The red positive lead should be connected to the `7.2V` port on the [blue terminal block labeled](www.google.com) `INPUT` located on the Supercortex. The black negative lead should be connected to the `GND` port on the same terminal block.
+
+### 5V Buck Converter
+
+![5V Buck Converter](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/5v_buck_converter.jpg)
+
+This device converts the 7.2V from the battery into a 5V USB port that can be used to power the Raspberry Pi. It should be connected on one end into a designated port on the Supercortex using soldered wires. On the other end it should be connected via a USB A to USB C cable into the power input on the Raspberry Pi.
+
+### Raspberry Pi 4B
+
+![Raspberry Pi 4B](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/raspberry_pi_4B.jpg)
+
+The Raspberry Pi is the brains of the robot. It is the component that runs the code and controls the robot. It is connected through its GPIO Header into both the Adafruit 16 Channel Servo Hat and the Custom Supercortex Board.
+
+### Adafruit 16 Channel Servo Hat
+
+![Adafruit 16 Channel Servo Hat](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/raspberry_pi_with_adafruit_servo_hat.jpg)
+
+This board, sold by Adafruit, has 16 channels of PWM which allow the control of up to 16 motors or servos. It stacks using the GPIO header on top of the Raspberry Pi. For additional rigidity, one can also use M2.5 Hex Standoffs to support this board as it is only supported by the GPIO on one side.
+
+### Custom Supercortex Board
+
+![Custom Supercortex Board](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/full_supercortex_stack.jpeg)
+
+*The image above is rotated 180 relative to both the Raspberry Pi and Adafruit Servo Hat images above.*
+
+This custom designed and printed board stacks on top of the Servo Hat described above. It uses both the Raspberry Pi GPIO header and a second connector to get the PWM from the Servo Hat.
+
+It includes two terminal blocks on the edge with the indent. The smaller one of these is used to send power to the Adafruit PWM board below. The larger of these acts as the primary power input from the battery for the entire Supercortex stack.
+
+It also includes four 8x3 female connectors on its top. Two of these connectors, labeled PWM provide 16 slots for both Vex motor controllers, Vex servos, and even certain non Vex servos. The connector labeled Digital provides 8 digital inputs for use with Vex Sensors. The analog connector, assuming that the MCP3008 is soldered to the board, provides 8 analog inputs for use with Vex analog sensors.
 
 ## Theory
 
-TODO Write
+*Preface: This section describes how the different parts of the electrical stack function and communicate. All of this content is abstracted in the final product, meaning that it is not necessary to know in order to have a functional robot.*
+
+TODO: write theory
 
 # Using Sensors and Actuators in Code
 
@@ -37,6 +81,8 @@ There are two major types of actuators provided by Vex:
 ### Vex Motor Controller
 
 ![Vex Motor Controller](https://github.com/iron-claw-972/VisionOnPi/blob/master/images/vex/motor_controller.jpg)
+
+![Test Image](/images/vex/motor_controller.jpg)
 
 In order to use a Vex motor it needs to have the red and black leads connected to the corresponding leads  on the Vex Motor controller.
 
