@@ -22,25 +22,25 @@ The 7.2 volt Vex Battery provides power the robot. It is attached using [an adap
 
 ### 5V Buck Converter
 
-![5V Buck Converter](/images/5v_buck_converter.jpg)
+<img src="/images/5v_buck_converter.jpg" height="300"/><br>
 
 This device converts the 7.2V from the battery into a 5V USB port that can be used to power the Raspberry Pi. It should be connected on one end into a designated port on the Supercortex using soldered wires. On the other end it should be connected via a USB A to USB C cable into the power input on the Raspberry Pi.
 
 ### Raspberry Pi 4B
 
-![Raspberry Pi 4B](/images/raspberry_pi_4B.jpg)
+<img src="/images/raspberry_pi_4B.jpg" height="300"/><br>
 
 The Raspberry Pi is the brains of the robot. It is the component that runs the code and controls the robot. It is connected through its GPIO Header into both the Adafruit 16 Channel Servo Hat and the Custom Supercortex Board.
 
 ### Adafruit 16 Channel Servo Hat
 
-![Adafruit 16 Channel Servo Hat](/images/raspberry_pi_with_adafruit_servo_hat.jpg)
+<img src="/images/raspberry_pi_with_adafruit_servo_hat.jpg" height="300"/><br>
 
 This board, sold by Adafruit, has 16 channels of PWM which allow the control of up to 16 motors or servos. It stacks using the GPIO header on top of the Raspberry Pi. For additional rigidity, one can also use M2.5 Hex Standoffs to support this board as it is only supported by the GPIO on one side.
 
 ### Custom Supercortex Board
 
-![Custom Supercortex Board](/images/full_supercortex_stack_.jpeg)
+<img src="/images/full_supercortex_stack_.jpeg" height="300"/><br>
 
 *The image above is rotated 180 relative to both the Raspberry Pi and Adafruit Servo Hat images above.*
 
@@ -80,7 +80,7 @@ There are two major types of actuators provided by Vex:
 
 ### Vex Motor Controller
 
-![Vex Motor Controller](/images/vex/motor_controller.jpg)
+<img src="/images/vex/motor_controller.jpg" height="300"/><br>
 
 In order to use a Vex motor it needs to have the red and black leads connected to the corresponding leads  on the Vex Motor controller.
 
@@ -108,7 +108,7 @@ while True:
 
 ### Servo
 
-![Servo Motor](/images/vex/servo_motor.jpg)
+<img src="/images/vex/servo_motor.jpg" height="300"/><br>
 
 In order to use the Vex servo it needs to be connected directly to a PWM port.
 
@@ -145,7 +145,7 @@ There are four types of digital sensors provided by Vex:
 
 ### Vex Button
 
-![Vex Button](/images/vex/bumper_switch.jpg)
+<img src="/images/vex/bumper_switch.jpg" height="300"/><br>
 
 Connect the Vex button to a digital input port.
 
@@ -189,7 +189,7 @@ while True:
 
 ### Vex Line Sensor
 
-![Vex Line Tracker](/images/vex/line_tracker.jpg)
+<img src="/images/vex/line_tracker.jpg" height="300"/><br>
 
 Connect the Vex line sensor to a digital input port.
 
@@ -220,7 +220,7 @@ while True:
 
 ### Vex Encoder
 
-![Vex Optical Encoder](/images/vex/optical_shaft_encoder.jpg)
+<img src="/images/vex/optical_shaft_encoder.jpg" height="300"/><br>
 
 Connect the Vex encoder to two digital input ports.
 
@@ -263,7 +263,7 @@ while True:
 
 ### Ultrasonic Rangefinder
 
-![Vex Ultrasonic Rangefinder](/images/vex/ultrasonic_rangefinder.jpg)
+<img src="/images/vex/ultrasonic_rangefinder.jpg" height="300"/><br>
 
 Connect the Vex ultrasonic sensor to two digital input ports.
 
@@ -350,9 +350,9 @@ There are two analog Vex sensors:
 
 ### Reading from MCP3008
 
-![Vex Potentiometer](/images/vex/rotary_potentiometer.jpg)
+<img src="/images/vex/rotary_potentiometer.jpg" height="300"/><br>
 
-![Vex Light Sensor](/images/vex/light_sensor.jpg)
+<img src="/images/vex/light_sensor.jpg" height="300"/><br>
 
 The MCP3008 chip uses the SPI interface to add 8 analog inputs to the Raspberry Pi. It can be used with many analog sensors with the same code. **If your Supercortex is not equipped with a MCP3008, it will not be able to read analog sensors. Check if the MCP3008 slot is populated.**
 
