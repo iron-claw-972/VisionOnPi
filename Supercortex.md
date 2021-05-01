@@ -70,6 +70,11 @@ sudo pip3 install adafruit-blinka
 sudo pip3 install adafruit-circuitpython-mcp3xxx
 ```
 
+To install offline, put the unzipped raspilibs folder on your raspberry pi (with a flashdrive for example). Then, in the same folder, run this command:
+```shell
+sudo pip3 install --no-index --find-links . -r requirements.txt
+```
+
 ## Actuators
 
 There are two major types of actuators provided by Vex:
