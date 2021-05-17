@@ -56,13 +56,127 @@ It also includes four 8x3 female connectors on its top. Two of these connectors,
 
 TODO: write theory
 
+# Connecting to and Coding on the Raspberry Pi
+
+The Raspberry Pi has the headless version of Pi OS installed, meaning there is no graphical user interface. It is not controlled via a connected monitor, keyboard, and mouse. Rather it is controlled remotely over a wired (ethernet) or wireless (wifi) network. There are two major ways to control it ssh and samba.
+
+## SSH
+
+ssh or Secure Shell Protocol is the more powerful of the two methods. It gives terminal access to the Raspberry Pi. This means you can run commands like `python controller.py` in order to start python code. It is also how the Raspberry Pi is setup and configured.
+
+### Connecting to the Wifi Network
+
+By default the network is called `pinet` plus a number. Connect to it as you would any other network. The default password is `AardvarkBadgerHedgehog`. *Note: This network does not have internet access, so if you want to search up things at the same time it is recommended that you use an ethernet connection.*
+
+### Connecting via Ethernet
+
+TODO: Find Ethernet IP address and write guide on how to connect via ethernet.
+
+### Connecting from Windows
+
+Open a terminal window and run the command if you are conneced via wifi:
+
+```
+ssh pi@192.168.4.1
+```
+
+or if you are connected via ethernet:
+
+```
+ssh pi@[Ethernet ip address]
+```
+
+### Connecting from Mac
+
+Open a terminal window and run the command:
+
+```
+ssh pi@raspberrypi.local
+```
+
+At this point it likely will give an error that warns you of the possibility of IP spoofing and the ssh connection will fail. In order to fix this you should run:
+
+```
+ssh-keygen -R raspberrypi.local
+```
+
+This will add the Raspberry Pi to you list of known hosts. At this point you should run the `ssh` command you ran at the start again. This time it should be successful.
+
+### How to Navigate
+
+The two most important navigational commands are `ls` and `cd`. `ls` stands for list. It lists all the files in the current directory.  *Directory is in this context effectively another word for folder.* This includes both other directories and files. `cd` stands for change directory. It allows one to navigate between folders.
+
+Using `ls` is as simple as typing `ls` in to the terminal and pressing enter. It will then list all of the files and directories in the directory you are in. You can also run it on a different directory by specifying a path. For example `ls folder1` would list the contents of `folder1`. There are also flags like `-l` which modify the way it functions allowing you to display specific information.
+
+Next is `cd`. In order to use `cd` you specify the path to a folder that you want to go to. For example you can run `cd folder1` to change your directory into `folder1`. You can also specify a full path, such as `cd /home/pi/folder1`. Some other quick notes. You can type `cd ~` to return to the original directory that you started in (which is `/home/pi/`) or `cd ..` to go up a directory (for examle to go from `/home/pi/` to `/home/`).
+
+The process for navigation is typically running `ls`, reading through the files / folders, choosing which one you want to go to, and running the `cd` command. **Important Note: It is extremely strongly recommended that you use autocompletion while using terminal commands. Type the first few letters of a folder / file and press tab to autocomplete it.**
+
+You may also need to use other commands like `micro [a file you want to edit]`, `rm [a file you want to delete]`, or `rm -rf [a folder you want to delete]`. Sometimes you may also need to run a command with administrator privileges. In this case you should add `sudo` to the start in order to do so. For example `sudo micro /etc/hostapd/hostapd.conf`. There is also `cat [file]` which prints the contents of a file. However, most of this is beyond the scope of this document.
+
+### A Quick Tour
+
+The first command you should run is `ls`. One of the folders you should see is `share`. This folder will contain all of the robot code. It is called share because it is shared using samba. This is described in greater detail under the samba section. Type `cd share` to enter the folder and then `ls` again to see its contents. Inside you should see two files `controller.py` and `README.txt`. Run the command `cat README.txt` to print the contents of `README.txt`.
+
+As described in the readme `controller.py` is an example program that controls a two wheeled robot using a keyboard on the web interface. You can edit this file to control your robot (ideally through samba as described later), and then run it with `python controller.py`.
+
+### Changing Wifi Network Name
+
+In order to edit the network configuration file while ssh'd into the Raspberry Pi run the following command:
+
+`sudo micro /etc/hostapd/hostapd.conf`
+
+This will open the text editor `micro` in the terminal. The file should contain approximately:
+
+```
+country_code=US
+interface=wlan0
+ssid=pinet1
+hw_mode=g
+channel=7
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=AardvarkBadgerHedgehog
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+```
+
+In the line `ssid=pinet1` change the number into your team number. The `wpa_passphrase` is the wifi network password, is must be between 8 and 64 characters. Everything else should not be changed.
+
+## Samba
+
+Samba allows the sharing of files between multiple computers. As described earlier, the `share` folder, which should contain the robot code, is shared using samba. This allows you to access and edit the code from a separate computer over the network. You can also use IDEs like PyCharm to allow editing with syntax highlighting and autocompletion that are not nearly as pleasant to use on the Raspberry Pi.
+
+### Connecting from Windows
+
+In order to connect from Windows first you need to either connect to the wifi network created by the Raspberry Pi as described above or connect via ethernet. [Follow this guide.](https://www.techrepublic.com/article/how-to-connect-to-linux-samba-shares-from-windows-10/) If you are connected by Wifi, the IP of the Raspberry Pi should be `192.168.4.1`.
+
+To determine the IP address from windows first you can connect via the wifi network, with the ethernet cable plugged in. Then you can ssh into the raspberry pi and run `ifconfig` a few IP addresses should be printed. Look for the IP address of `eth0` and write it down. Type `exit` to exit the ssh session, disconnect the wifi leaving the ethernet plugged in, and ssh using the IP address you found.
+
+TODO: Get better way to find Ethernet IP on windows.
+
+Enter the credentials `pi` and `raspberry` in order to access it. Open the share folder. Inside there should be `controller.py` and `README.txt`. Open `controller.py` in your favorite python IDE, for example PyCharm or Atom.
+
+### Connecting from Mac
+
+In order to connect from Mac first you need to either connect to the wifi network created by the Raspberry Pi as described above or connect via ethernet. Once you are connected open `Finder` and look under the Network tab. The Raspberry Pi should appear under there. Double click on it to open it. After a few seconds loading you should see a folder `share`, do not open it. Instead you should click on the `connect as` button in the top right corner. Enter the credentials `pi` and `raspberry` in order to access it. At this point there should be two folder `pi` and `share`. Open the share folder. Inside there should be `controller.py` and `README.txt`. Open `controller.py` in your favorite python IDE, for example PyCharm or Atom.
+
+## Web Interface
+
+The Raspberry Pi image includes a web interface for controlling a robot. This interface creates a web page that can be connected to. While on this webpage the keys currently pressed are sent via websockets to `controller.py` on the robot.
+
+The url of this page is https://192.168.4.1:5000 while connected via wifi. It is `https://[Ethernet IP Address]:5000` while connected via ethernet. It is recommended that you use the `ssh` + `ifconfig` method, described above, if you want to find the ip address while connected via ethernet.
+
 # Using Sensors and Actuators in Code
 
 ## Necessary Libraries
 
 In order to use actuators and sensors with python on the Raspberry Pi a few libraries need to be downloaded. Run the following commands in the terminal:
 
-```shell
+```
 sudo pip3 install adafruit-circuitpython-servokit
 sudo pip3 install gpiozero
 sudo pip3 install Encoder
@@ -70,8 +184,9 @@ sudo pip3 install adafruit-blinka
 sudo pip3 install adafruit-circuitpython-mcp3xxx
 ```
 
-To install offline, put the unzipped raspilibs folder on your raspberry pi (with a flashdrive for example). Then, in the same folder, run this command:
-```shell
+To install offline, put the unzipped raspilibs folder on your raspberry pi (with a flashdrive for example). Use `cd` to change directory into this extracted folder. Then, in the same folder, run this command:
+
+```
 sudo pip3 install --no-index --find-links . -r requirements.txt
 ```
 
