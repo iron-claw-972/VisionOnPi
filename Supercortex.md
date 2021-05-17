@@ -68,9 +68,9 @@ ssh or Secure Shell Protocol is the more powerful of the two methods. It gives t
 
 By default the network is called `pinet` plus a number. Connect to it as you would any other network. The default password is `AardvarkBadgerHedgehog`. *Note: This network does not have internet access, so if you want to search up things at the same time it is recommended that you use an ethernet connection.*
 
-### Connecting via Ethernet
+### Determining Ethernet IP Address from Windows
 
-TODO: Find Ethernet IP address and write guide on how to connect via ethernet.
+To determine the IP address from windows first you connect via the wifi network with the ethernet cable plugged in. Then ssh into the raspberry pi through wifi as described below and run `ifconfig`. A few IP addresses should be printed. Look for the IP address of `eth0` and write it down. It should look something like `192.168.4.10`, though the exact numbers vary. Type `exit` to exit the ssh session, disconnect the wifi leaving the ethernet plugged in, and ssh using the IP address you found as described below.
 
 ### Connecting from Windows
 
@@ -104,7 +104,7 @@ This will add the Raspberry Pi to you list of known hosts. At this point you sho
 
 ### How to Navigate
 
-The two most important navigational commands are `ls` and `cd`. `ls` stands for list. It lists all the files in the current directory.  *Directory is in this context effectively another word for folder.* This includes both other directories and files. `cd` stands for change directory. It allows one to navigate between folders.
+The two most important navigational commands are `ls` and `cd`. `ls` stands for list. It lists all the files in the current directory. *Directory is in this context effectively another word for folder.* This includes both other directories and files. `cd` stands for change directory. It allows one to navigate between folders.
 
 Using `ls` is as simple as typing `ls` in to the terminal and pressing enter. It will then list all of the files and directories in the directory you are in. You can also run it on a different directory by specifying a path. For example `ls folder1` would list the contents of `folder1`. There are also flags like `-l` which modify the way it functions allowing you to display specific information.
 
@@ -152,11 +152,7 @@ Samba allows the sharing of files between multiple computers. As described earli
 
 ### Connecting from Windows
 
-In order to connect from Windows first you need to either connect to the wifi network created by the Raspberry Pi as described above or connect via ethernet. [Follow this guide.](https://www.techrepublic.com/article/how-to-connect-to-linux-samba-shares-from-windows-10/) If you are connected by Wifi, the IP of the Raspberry Pi should be `192.168.4.1`.
-
-To determine the IP address from windows first you can connect via the wifi network, with the ethernet cable plugged in. Then you can ssh into the raspberry pi and run `ifconfig` a few IP addresses should be printed. Look for the IP address of `eth0` and write it down. Type `exit` to exit the ssh session, disconnect the wifi leaving the ethernet plugged in, and ssh using the IP address you found.
-
-TODO: Get better way to find Ethernet IP on windows.
+In order to connect from Windows first you need to either connect to the wifi network created by the Raspberry Pi as described above or connect via ethernet. [Follow this guide.](https://www.techrepublic.com/article/how-to-connect-to-linux-samba-shares-from-windows-10/) If you are connected by Wifi, the IP of the Raspberry Pi should be `192.168.4.1`. Use the technique described above in **Determining Ethernet IP Address from Windows** to get the IP address if you are connecting via ethernet.
 
 Enter the credentials `pi` and `raspberry` in order to access it. Open the share folder. Inside there should be `controller.py` and `README.txt`. Open `controller.py` in your favorite python IDE, for example PyCharm or Atom.
 
