@@ -170,6 +170,8 @@ The url of this page is https://192.168.4.1:5000 while connected via wifi. It is
 
 ## Necessary Libraries
 
+**ALL LIBRARIES SHOULD BE PREINSTALLED. CHECK BEFORE DOWNLOADING.**
+
 In order to use actuators and sensors with python on the Raspberry Pi a few libraries need to be downloaded. Run the following commands in the terminal:
 
 ```
