@@ -146,6 +146,8 @@ rsn_pairwise=CCMP
 
 In the line `ssid=pinet1` change the number into your team number. The `wpa_passphrase` is the wifi network password, is must be between 8 and 64 characters. Everything else should not be changed.
 
+Then press `ctrl+s` to save and `ctrl+q` to close the file.
+
 ## Samba
 
 Samba allows the sharing of files between multiple computers. As described earlier, the `share` folder, which should contain the robot code, is shared using samba. This allows you to access and edit the code from a separate computer over the network. You can also use IDEs like PyCharm to allow editing with syntax highlighting and autocompletion that are not nearly as pleasant to use on the Raspberry Pi.
