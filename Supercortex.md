@@ -166,7 +166,7 @@ In order to connect from Mac first you need to either connect to the wifi networ
 
 The Raspberry Pi image includes a web interface for controlling a robot. This interface creates a web page that can be connected to. While on this webpage the keys currently pressed are sent via websockets to `controller.py` on the robot.
 
-The url of this page is https://192.168.4.1:5000 while connected via wifi. It is `https://[Ethernet IP Address]:5000` while connected via ethernet. It is recommended that you use the `ssh` + `ifconfig` method, described above, if you want to find the ip address while connected via ethernet.
+The url of this page is http://192.168.4.1:5000 while connected via wifi. It is `https://[Ethernet IP Address]:5000` while connected via ethernet. It is recommended that you use the `ssh` + `ifconfig` method, described above, if you want to find the ip address while connected via ethernet.
 
 # Using Sensors and Actuators in Code
 
